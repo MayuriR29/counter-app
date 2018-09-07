@@ -6,7 +6,7 @@ class Counters extends Component {
     counters: [
       { id: 1, value: 2 },
       { id: 2, value: 3 },
-      { id: 3, value: 0 },
+      { id: 3, value: 1 },
       { id: 4, value: 0 }
     ]
   };
@@ -20,15 +20,37 @@ class Counters extends Component {
     });
   };
 
+  handleIncrement = counter => {
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counters[index] = { ...counter };
+    counters[index].value++;
+    this.setState({
+      counters
+    });
+  };
+
+  handleReset = () => {
+    const resetCounter = this.state.counters.map(eachCounter => {
+      eachCounter.value = 0;
+      return eachCounter;
+    });
+    this.setState({
+      counters: resetCounter
+    });
+  };
   render() {
     return (
       <div>
+        <button className="btn btn-secondary btn-sm" onClick={this.handleReset}>
+          Reset
+        </button>
         {this.state.counters.map(eachCounter => (
           <Counter
-            value={eachCounter.value}
-            key={eachCounter.id}
-            id={eachCounter.id}
+            counter={eachCounter}
+            key={eachCounter.id} //used internally by react ,cannot be accessed via props
             onDelete={this.handleDelete}
+            onIncrement={this.handleIncrement}
           />
         ))}
       </div>
