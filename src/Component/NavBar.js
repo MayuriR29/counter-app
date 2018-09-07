@@ -1,6 +1,6 @@
-import React  from "react";
+import React from "react";
 
-const NavBar = (props) => {
+const NavBar = ({ totalCounters }) => {
   return (
     <div>
       <nav className="navbar navbar-light bg-light">
@@ -8,7 +8,7 @@ const NavBar = (props) => {
           Navbar
         </a>
         <span className="badge badge-pill badge-secondary">
-          {props.totalCounters.length}
+          {totalCounters.length}
         </span>
       </nav>
     </div>
