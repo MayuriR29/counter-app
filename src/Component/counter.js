@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 class Counter extends Component {
   getBadgeClass() {
     let classes = "badge m-2 badge-";
@@ -12,7 +13,6 @@ class Counter extends Component {
   }
 
   render() {
-    console.log("this.props in counter", this.props);
     return (
       <div>
         <button className={this.getBadgeClass()}>{this.formatCount()}</button>
