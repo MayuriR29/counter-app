@@ -4,15 +4,24 @@ import Counters from "./Component/Counters";
 import "./App.css";
 
 class App extends Component {
-  state = {
-    counters: [
-      { id: 1, value: 0 },
-      { id: 2, value: 0 },
-      { id: 3, value: 0 },
-      { id: 4, value: 0 }
-    ]
-  };
+  constructor(){
+    super();
+    console.log('hi in constructor');
+    this.state = {
+      counters: [
+        { id: 1, value: 0 },
+        { id: 2, value: 0 },
+        { id: 3, value: 0 },
+        { id: 4, value: 0 }
+      ]
+    };
+  }
 
+  componentDidMount(){
+    console.log('Component Mounted');
+  }
+
+ 
   handleDelete = counterId => {
     const updatedCounter = this.state.counters.filter(
       eachCounter => eachCounter.id !== counterId
@@ -42,6 +51,7 @@ class App extends Component {
     });
   };
   render() {
+    console.log('app rendered ')
     return (
       <div>
         <NavBar totalCounters={this.state.counters}/>

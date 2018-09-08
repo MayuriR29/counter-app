@@ -13,6 +13,7 @@ class Counter extends Component {
   }
 
   render() {
+    console.log('Counter Bar rendered');
     return (
       <div>
         <button className={this.getBadgeClass()}>{this.formatCount()}</button>
